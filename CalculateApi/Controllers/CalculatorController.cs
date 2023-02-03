@@ -1,5 +1,6 @@
 ﻿using Calculation.Lib.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace CalculateApi.Controllers;
 [ApiController]
@@ -19,15 +20,19 @@ public class CalculatorController: ControllerBase
     public int Calculate(int start, int amount, string operationType)
     {
         int result;
-        if (operationType == "add")
+        if (operationType == "add")//This could be refactored into a service and httpstatuscode handling added
         {
             result = _calculator.Add(start, amount);
         }
-        else
+        else if(operationType == "subtract")
         {
             result = _calculator.Subtract(start, amount);
         }
-        _logger.LogInformation($"Subtract called with start {start}, amount {amount} returning {result}");
+        else
+        {
+            throw new NotSupportedException($"Invalid operation type {operationType}");
+        }
+        _logger.LogInformation($"called with start {start}, amount {amount} returning {result}");
         return result;
     }
 }
