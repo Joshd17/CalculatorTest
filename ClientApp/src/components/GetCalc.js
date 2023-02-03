@@ -24,7 +24,6 @@ function GetCalc() {
         transform: 'translate(-50%, -50%)',
         minWidth: 300,
         maxWidth: 400,
-
         bgcolor: 'background.paper',
         border: '2px solid #000',
         boxShadow: 24,
@@ -58,7 +57,7 @@ function GetCalc() {
             <Calculator />
 
             </div>
-            <div style={{backgroundColor: backColor, width:"100%", height:"5px"}} >
+                <div style={{backgroundColor: backColor, width:"100%", height:"5px"}} >
             </div>
             </Box>
             </Modal>
@@ -69,7 +68,6 @@ function GetCalc() {
                 <p>Customize text color</p>
                 <MuiColorInput value={textColor} onChange={handleTextColorChange} />
             </div>
-
         </div>
     );
 
